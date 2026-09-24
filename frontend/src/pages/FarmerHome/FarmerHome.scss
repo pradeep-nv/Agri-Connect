@@ -1,0 +1,415 @@
+.home {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+  background-color: var(--bg-primary);
+
+  .homeContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
+
+    .mainContent {
+      padding: 1.5rem 2rem 3rem 2rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    /* Welcome Header */
+    .welcomeHeader {
+      background: linear-gradient(135deg, #ffffff, var(--agri-sage-50));
+      border: 1px solid var(--border-organic);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+      box-shadow: var(--shadow-sm);
+
+      .headerText {
+        .dateSubtitle {
+          font-size: 0.8rem;
+          font-weight: 700;
+          color: var(--agri-sage-600);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+
+        .welcomeTitle {
+          font-size: 1.6rem;
+          font-weight: 800;
+          color: var(--agri-sage-900);
+          margin: 0.25rem 0;
+        }
+
+        .welcomeDesc {
+          font-size: 0.9rem;
+          color: var(--text-muted);
+          max-width: 600px;
+        }
+      }
+
+      .quickActions {
+        display: flex;
+        gap: 0.75rem;
+
+        .actionBtn {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.65rem 1.1rem;
+          border-radius: var(--radius-sm);
+          font-family: var(--font-family-main);
+          font-size: 0.85rem;
+          font-weight: 600;
+          text-decoration: none;
+          transition: all var(--transition-fast);
+        }
+
+        .actionPrimary {
+          background: linear-gradient(135deg, var(--agri-sage-500), var(--agri-sage-600));
+          color: white;
+          box-shadow: 0 4px 12px rgba(82, 121, 111, 0.25);
+
+          &:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(82, 121, 111, 0.35);
+          }
+        }
+
+        .actionSecondary {
+          background: var(--bg-surface);
+          border: 1px solid var(--border-organic);
+          color: var(--agri-sage-800);
+
+          &:hover {
+            background: var(--agri-sage-50);
+            border-color: var(--agri-sage-300);
+            transform: translateY(-2px);
+          }
+        }
+      }
+    }
+
+    /* Metrics Grid */
+    .metricsGrid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+
+      .metricCard {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-organic);
+        border-radius: var(--radius-md);
+        padding: 1.25rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        box-shadow: var(--shadow-sm);
+        transition: all var(--transition-normal);
+
+        &:hover {
+          transform: translateY(-2px);
+          box-shadow: var(--shadow-md);
+        }
+
+        .metricIcon {
+          width: 48px;
+          height: 48px;
+          border-radius: var(--radius-sm);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+
+          svg {
+            font-size: 1.5rem;
+          }
+        }
+
+        .iconGreen {
+          background-color: #e6f4ea;
+          color: #137333;
+        }
+
+        .iconSage {
+          background-color: var(--agri-sage-100);
+          color: var(--agri-sage-700);
+        }
+
+        .iconAmber {
+          background-color: #fef7e0;
+          color: #b06000;
+        }
+
+        .iconCoral {
+          background-color: #fce8e6;
+          color: #c5221f;
+        }
+
+        .metricInfo {
+          display: flex;
+          flex-direction: column;
+
+          .metricValue {
+            font-family: var(--font-family-heading);
+            font-size: 1.35rem;
+            font-weight: 800;
+            color: var(--agri-sage-900);
+            line-height: 1.2;
+          }
+
+          .metricLabel {
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--text-muted);
+          }
+        }
+      }
+    }
+
+    /* Widgets Section (Expert Advice) */
+    .widgetsSection {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-organic);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+
+      .sectionHeader {
+        margin-bottom: 1.25rem;
+
+        .titleGroup {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+
+          .headerIcon {
+            color: var(--agri-sage-500);
+            font-size: 1.5rem;
+          }
+
+          h2 {
+            font-size: 1.25rem;
+            font-weight: 700;
+          }
+        }
+
+        .sectionSubtitle {
+          font-size: 0.82rem;
+          color: var(--text-muted);
+          margin-left: 2rem;
+        }
+      }
+
+      .widgetsContainer {
+        display: flex;
+        gap: 1.25rem;
+        overflow-x: auto;
+        padding-bottom: 0.5rem;
+
+        &::-webkit-scrollbar {
+          height: 6px;
+        }
+        &::-webkit-scrollbar-thumb {
+          background: var(--agri-sage-200);
+          border-radius: var(--radius-pill);
+        }
+      }
+    }
+
+    /* Notifications & Appointments Dual Panel */
+    .notifications-appointments {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 1.25rem;
+
+      .infoPanel {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-organic);
+        border-radius: var(--radius-md);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+        transition: all var(--transition-normal);
+
+        &:hover {
+          box-shadow: var(--shadow-md);
+        }
+
+        .panelHeader {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+          padding-bottom: 0.75rem;
+          border-bottom: 1px solid var(--border-subtle);
+
+          .panelIcon {
+            color: var(--agri-sage-500);
+            font-size: 1.35rem;
+          }
+
+          h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+          }
+        }
+
+        .alertList {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+
+          .alertItem {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.6rem;
+            font-size: 0.88rem;
+            color: var(--text-main);
+            background-color: var(--agri-sage-50);
+            padding: 0.65rem 0.85rem;
+            border-radius: var(--radius-sm);
+            border-left: 3px solid var(--agri-sage-500);
+
+            .alertDot {
+              width: 8px;
+              height: 8px;
+              border-radius: 50%;
+              background-color: var(--agri-sage-500);
+              margin-top: 6px;
+              flex-shrink: 0;
+            }
+
+            .alertText {
+              line-height: 1.4;
+            }
+          }
+
+          .emptyItem {
+            background-color: transparent;
+            border-left: none;
+            color: var(--text-muted);
+          }
+        }
+
+        .appointmentList {
+          list-style: none;
+          display: flex;
+          flex-direction: column;
+          gap: 0.75rem;
+
+          .appointmentItem {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background-color: var(--agri-sage-50);
+            padding: 0.65rem 0.85rem;
+            border-radius: var(--radius-sm);
+
+            .appDate {
+              background: var(--bg-surface);
+              border: 1px solid var(--border-organic);
+              border-radius: 6px;
+              padding: 0.35rem 0.6rem;
+              font-size: 0.75rem;
+              font-weight: 700;
+              color: var(--agri-sage-800);
+              text-align: center;
+              min-width: 64px;
+            }
+
+            .appDetails {
+              display: flex;
+              flex-direction: column;
+              gap: 0.15rem;
+
+              .expertName {
+                font-size: 0.9rem;
+                font-weight: 600;
+                color: var(--agri-sage-900);
+              }
+
+              .appStatusBadge {
+                font-size: 0.7rem;
+                font-weight: 700;
+                text-transform: uppercase;
+                color: var(--agri-sage-600);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    /* Chart Section */
+    .chartSection {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+      gap: 1.25rem;
+
+      .chartCard {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-organic);
+        border-radius: var(--radius-md);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+
+        .chartHeader {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-bottom: 1.25rem;
+
+          h2 {
+            font-size: 1.1rem;
+            font-weight: 700;
+          }
+
+          .yearSelect {
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-organic);
+            font-family: var(--font-family-main);
+            font-size: 0.85rem;
+            color: var(--text-main);
+            outline: none;
+
+            &:focus {
+              border-color: var(--agri-sage-500);
+            }
+          }
+        }
+      }
+    }
+
+    /* Crop Telemetry Cards */
+    .crop-stats {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+
+      .telemetryCard {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-organic);
+        border-radius: var(--radius-md);
+        padding: 1.5rem;
+        box-shadow: var(--shadow-sm);
+      }
+    }
+
+    /* Farming News */
+    .newsSection {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-organic);
+      border-radius: var(--radius-md);
+      padding: 1.5rem;
+      box-shadow: var(--shadow-sm);
+    }
+  }
+}

@@ -1,0 +1,457 @@
+.authPageWrapper {
+  min-height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  padding: 1.5rem;
+
+  /* Animated Ambient Background Blobs */
+  .bgBlob {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.6;
+    z-index: 1;
+    animation: blobFloat 12s infinite alternate ease-in-out;
+  }
+
+  .blob1 {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.25), rgba(82, 121, 111, 0.1));
+    top: -100px;
+    left: -100px;
+  }
+
+  .blob2 {
+    width: 500px;
+    height: 500px;
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.2), rgba(82, 121, 111, 0.15));
+    bottom: -150px;
+    right: -150px;
+    animation-delay: -6s;
+  }
+
+  @keyframes blobFloat {
+    0% {
+      transform: translate(0, 0) scale(1);
+    }
+    100% {
+      transform: translate(40px, 30px) scale(1.1);
+    }
+  }
+
+  .authContainer {
+    position: relative;
+    z-index: 10;
+    width: 960px;
+    max-width: 100%;
+    min-height: 580px;
+    background: #ffffff;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 20px 50px rgba(39, 59, 54, 0.12);
+    border: 1px solid var(--border-organic);
+    display: flex;
+    overflow: hidden;
+
+    /* Form Side */
+    .formSection {
+      width: 50%;
+      position: relative;
+      overflow: hidden;
+
+      .formBox {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        padding: 3rem 2.5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+        .brandBadge {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          margin-bottom: 1rem;
+
+          .brandLogo {
+            width: 32px;
+            height: 32px;
+          }
+
+          .brandName {
+            font-family: var(--font-family-heading);
+            font-size: 1.15rem;
+            font-weight: 800;
+            color: var(--agri-sage-900);
+          }
+        }
+
+        h2 {
+          font-size: 1.65rem;
+          font-weight: 800;
+          color: var(--agri-sage-900);
+          line-height: 1.2;
+        }
+
+        .subtitle {
+          font-size: 0.82rem;
+          color: var(--text-muted);
+          margin-top: 0.2rem;
+          margin-bottom: 1.5rem;
+        }
+
+        form {
+          display: flex;
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        /* Role Selector Pills */
+        .roleSelector {
+          display: flex;
+          gap: 0.5rem;
+          background-color: var(--agri-sage-50);
+          padding: 0.25rem;
+          border-radius: var(--radius-sm);
+          border: 1px solid var(--border-subtle);
+
+          .roleTab {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.4rem;
+            padding: 0.5rem 0.75rem;
+            border: none;
+            border-radius: 6px;
+            background: transparent;
+            color: var(--text-muted);
+            font-family: var(--font-family-main);
+            font-size: 0.82rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+
+            .roleIcon {
+              font-size: 1.1rem;
+            }
+
+            &.selected {
+              background-color: #ffffff;
+              color: var(--agri-sage-900);
+              box-shadow: var(--shadow-sm);
+              font-weight: 700;
+            }
+          }
+        }
+
+        /* Input Group with Icon */
+        .inputGroup {
+          position: relative;
+          display: flex;
+          align-items: center;
+
+          .inputIcon {
+            position: absolute;
+            left: 0.85rem;
+            color: var(--agri-sage-500);
+            font-size: 1.25rem;
+          }
+
+          input {
+            width: 100%;
+            padding: 0.75rem 0.85rem 0.75rem 2.6rem;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border-organic);
+            background-color: #ffffff;
+            font-family: var(--font-family-main);
+            font-size: 0.88rem;
+            color: var(--text-main);
+            outline: none;
+            transition: all var(--transition-fast);
+
+            &:focus {
+              border-color: var(--agri-sage-500);
+              box-shadow: 0 0 0 3px rgba(82, 121, 111, 0.15);
+            }
+          }
+
+          .eyeBtn {
+            position: absolute;
+            right: 0.85rem;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+
+            &:hover {
+              color: var(--text-main);
+            }
+          }
+        }
+
+        .submitBtn {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 0.5rem;
+          background: linear-gradient(135deg, var(--agri-sage-500), var(--agri-sage-600));
+          color: white;
+          border: none;
+          border-radius: var(--radius-sm);
+          padding: 0.8rem;
+          font-family: var(--font-family-main);
+          font-size: 0.9rem;
+          font-weight: 700;
+          cursor: pointer;
+          margin-top: 0.5rem;
+          box-shadow: 0 4px 14px rgba(82, 121, 111, 0.25);
+          transition: all var(--transition-fast);
+
+          .btnArrow {
+            transition: transform var(--transition-fast);
+          }
+
+          &:hover:not(:disabled) {
+            background: linear-gradient(135deg, var(--agri-sage-600), var(--agri-sage-700));
+            box-shadow: 0 6px 18px rgba(82, 121, 111, 0.35);
+
+            .btnArrow {
+              transform: translateX(4px);
+            }
+          }
+
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+        }
+
+        .mobileToggle {
+          display: none;
+          margin-top: 1.25rem;
+          text-align: center;
+          font-size: 0.85rem;
+          color: var(--text-muted);
+
+          .inlineLink {
+            background: none;
+            border: none;
+            color: var(--agri-sage-600);
+            font-weight: 700;
+            cursor: pointer;
+            padding: 0;
+
+            &:hover {
+              text-decoration: underline;
+            }
+          }
+        }
+      }
+
+      .sign-in-form {
+        opacity: 1;
+        z-index: 2;
+        transform: translateX(0);
+      }
+
+      .sign-up-form {
+        opacity: 0;
+        z-index: 1;
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Hero Banner Side */
+    .bannerSection {
+      width: 50%;
+      background: linear-gradient(135deg, var(--agri-sage-700), var(--agri-sage-900));
+      color: white;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2.5rem;
+
+      .bannerOverlay {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(circle at 80% 20%, rgba(16, 185, 129, 0.2), transparent 70%);
+      }
+
+      .bannerContent {
+        position: absolute;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 0 2rem;
+        width: 100%;
+        transition: all 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+        .aiPill {
+          display: inline-flex;
+          align-items: center;
+          gap: 0.35rem;
+          background: rgba(255, 255, 255, 0.15);
+          backdrop-filter: blur(8px);
+          padding: 0.35rem 0.85rem;
+          border-radius: var(--radius-pill);
+          font-size: 0.75rem;
+          font-weight: 700;
+          color: var(--agri-sage-100);
+          margin-bottom: 1rem;
+          border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+          font-family: var(--font-family-heading);
+          font-size: 1.85rem;
+          font-weight: 800;
+          color: white;
+          line-height: 1.25;
+          margin-bottom: 0.75rem;
+        }
+
+        p {
+          font-size: 0.88rem;
+          color: var(--agri-sage-200);
+          line-height: 1.5;
+          margin-bottom: 1.5rem;
+          max-width: 380px;
+        }
+
+        .featureChips {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 0.5rem;
+          margin-bottom: 1.75rem;
+
+          .chip {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 0.35rem 0.75rem;
+            border-radius: var(--radius-pill);
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: var(--agri-sage-100);
+          }
+        }
+
+        .bannerToggleGroup {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 0.6rem;
+          margin-top: 0.5rem;
+
+          .togglePrompt {
+            font-size: 0.82rem;
+            color: var(--agri-sage-200);
+            font-weight: 500;
+          }
+
+          .bannerToggleBtn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1.5px solid rgba(255, 255, 255, 0.35);
+            color: white;
+            padding: 0.7rem 1.4rem;
+            border-radius: var(--radius-pill);
+            font-family: var(--font-family-main);
+            font-size: 0.88rem;
+            font-weight: 700;
+            cursor: pointer;
+            backdrop-filter: blur(4px);
+            transition: all var(--transition-fast);
+
+            &:hover {
+              background: #ffffff;
+              color: var(--agri-sage-900);
+              border-color: #ffffff;
+              box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+              transform: translateY(-2px);
+            }
+          }
+        }
+      }
+
+      .bannerRight {
+        opacity: 1;
+        transform: translateX(0);
+      }
+
+      .bannerLeft {
+        opacity: 0;
+        transform: translateX(-100%);
+      }
+    }
+
+    /* Active Mode Transformations */
+    &.active {
+      .formSection {
+        .sign-in-form {
+          opacity: 0;
+          z-index: 1;
+          transform: translateX(100%);
+        }
+
+        .sign-up-form {
+          opacity: 1;
+          z-index: 2;
+          transform: translateX(0);
+        }
+      }
+
+      .bannerSection {
+        .bannerRight {
+          opacity: 0;
+          transform: translateX(100%);
+        }
+
+        .bannerLeft {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+    }
+  }
+
+  /* Responsive Rules */
+  @media (max-width: 768px) {
+    .authContainer {
+      flex-direction: column;
+      min-height: auto;
+
+      .formSection {
+        width: 100%;
+        min-height: 520px;
+
+        .formBox {
+          .mobileToggle {
+            display: block;
+          }
+        }
+      }
+
+      .bannerSection {
+        display: none;
+      }
+    }
+  }
+}

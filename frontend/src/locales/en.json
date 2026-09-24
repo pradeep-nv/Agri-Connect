@@ -1,0 +1,19 @@
+{
+  "navbar": {
+    "profile": "Profile",
+    "search": "Search"
+  },
+  "auth": {
+    "login": "Login",
+    "signup": "Sign Up"
+  },
+  "welcome": "Welcome to Agri Connect",
+  "farmer_home": {
+    "expertsSay": "What Experts Have to Say Today",
+    "noBlogs": "No blog posts available",
+    "notifications": "Notifications",
+    "noNotifications": "No notifications available.",
+    "upcomingAppointments": "Upcoming Appointments",
+    "enterYear": "Enter year"
+  }
+}

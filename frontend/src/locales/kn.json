@@ -1,0 +1,19 @@
+{
+  "navbar": {
+    "profile": "ಪ್ರೊಫೈಲ್",
+    "search": "ಹುಡುಕು"
+  },
+  "auth": {
+    "login": "ಪ್ರವೇಶ",
+    "signup": "ಸೈನ್ ಅಪ್"
+  },
+  "welcome": "ಅಭಿವೃದ್ಧಿ ಸಂಪರ್ಕಕ್ಕೆ ಸ್ವಾಗತ",
+  "farmer_home": {
+    "expertsSay": "ತಜ್ಞರು ಇಂದು ಏನು ಹೇಳುತ್ತಾರೆ",
+    "noBlogs": "ಯಾವುದೇ ಬ್ಲಾಗ್ ಪೋಸ್ಟ್‌ಗಳು ಲಭ್ಯವಿಲ್ಲ",
+    "notifications": "ಅಧಿಸೂಚನೆಗಳು",
+    "noNotifications": "ಯಾವುದೇ ಅಧಿಸೂಚನೆಗಳು ಲಭ್ಯವಿಲ್ಲ.",
+    "upcomingAppointments": "ಮುಂಬರುವ ನೇಮಕಾತಿಗಳು",
+    "enterYear": "ವರ್ಷ ನಮೂದಿಸಿ"
+  }
+}

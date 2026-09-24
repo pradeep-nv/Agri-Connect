@@ -1,0 +1,182 @@
+/* Warm Organic Sage - AgriConnect Master Design System */
+:root {
+  /* Primary Color Palette */
+  --agri-sage-50: #f4f7f5;
+  --agri-sage-100: #e3ebe5;
+  --agri-sage-200: #c5d7cb;
+  --agri-sage-300: #9cbca7;
+  --agri-sage-400: #739d81;
+  --agri-sage-500: #52796f;
+  --agri-sage-600: #3b5a52;
+  --agri-sage-700: #2f4842;
+  --agri-sage-800: #273b36;
+  --agri-sage-900: #1b2825;
+
+  /* Accent Colors */
+  --agri-emerald-accent: #10b981;
+  --agri-amber-accent: #f59e0b;
+  --agri-blue-accent: #3b82f6;
+  --agri-coral-accent: #ef4444;
+
+  /* Backgrounds & Surfaces */
+  --bg-primary: #f8faf9;
+  --bg-surface: #ffffff;
+  --bg-surface-subtle: #f1f5f3;
+  --bg-sidebar: #ffffff;
+
+  /* Typography */
+  --font-family-main: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-heading: 'Outfit', 'Plus Jakarta Sans', sans-serif;
+
+  /* Text Colors */
+  --text-main: #1e293b;
+  --text-muted: #64748b;
+  --text-light: #94a3b8;
+  --text-on-dark: #ffffff;
+
+  /* Borders & Shadows */
+  --border-subtle: #e2e8f0;
+  --border-organic: #d2ded7;
+  --shadow-sm: 0 2px 4px rgba(27, 40, 37, 0.03);
+  --shadow-md: 0 6px 16px rgba(27, 40, 37, 0.06);
+  --shadow-lg: 0 12px 28px rgba(27, 40, 37, 0.09);
+  --shadow-hover: 0 16px 36px rgba(47, 72, 66, 0.14);
+
+  /* Radius */
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 20px;
+  --radius-pill: 9999px;
+
+  /* Transitions */
+  --transition-fast: 0.18s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-family-main);
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-heading);
+  color: var(--agri-sage-900);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+/* Custom Smooth Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--agri-sage-50);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--agri-sage-300);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--agri-sage-400);
+}
+
+/* Utility Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Base Card Style */
+.agri-card {
+  background: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-organic);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.agri-card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Base Button Styles */
+.agri-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-family: var(--font-family-main);
+  font-weight: 600;
+  font-size: 0.9rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.agri-btn-primary {
+  background: linear-gradient(135deg, var(--agri-sage-500), var(--agri-sage-600));
+  color: var(--text-on-dark);
+  box-shadow: 0 4px 12px rgba(82, 121, 111, 0.25);
+}
+
+.agri-btn-primary:hover {
+  background: linear-gradient(135deg, var(--agri-sage-600), var(--agri-sage-700));
+  box-shadow: 0 6px 18px rgba(82, 121, 111, 0.35);
+  transform: translateY(-1px);
+}
+
+/* Status Badges */
+.agri-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.agri-badge-success {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+.agri-badge-warning {
+  background-color: #fef7e0;
+  color: #b06000;
+}
+
+.agri-badge-info {
+  background-color: #e8f0fe;
+  color: #1a73e8;
+}

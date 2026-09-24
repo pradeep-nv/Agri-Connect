@@ -1,0 +1,267 @@
+.market-prices-container {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: #f8fcf8;
+
+    .left {
+        width: 250px;
+        flex-shrink: 0;
+    }
+
+    .right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+
+        .top {
+            padding: 10px 20px;
+            background-color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .bottom {
+            flex: 1;
+            padding: 24px 32px;
+            overflow-y: auto;
+
+            .market-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 24px;
+
+                .title {
+                    display: flex;
+                    align-items: center;
+                    gap: 12px;
+
+                    .header-icon {
+                        font-size: 32px;
+                        color: #2d6a4f;
+                    }
+
+                    h2 {
+                        margin: 0;
+                        font-size: 28px;
+                        color: #1b4332;
+                    }
+                }
+
+                .sync-btn {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    background-color: #2d6a4f;
+                    color: white;
+                    border: none;
+                    padding: 10px 20px;
+                    border-radius: 8px;
+                    font-size: 16px;
+                    font-weight: 600;
+                    cursor: pointer;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        background-color: #1b4332;
+                        box-shadow: 0 4px 8px rgba(45, 106, 79, 0.2);
+                    }
+
+                    &:disabled {
+                        background-color: #95d5b2;
+                        cursor: not-allowed;
+                    }
+                }
+            }
+
+            .filters-container {
+                background: white;
+                padding: 20px;
+                border-radius: 12px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+                margin-bottom: 30px;
+
+                .search-form {
+                    display: flex;
+                    gap: 20px;
+                    flex-wrap: wrap;
+
+                    .input-group {
+                        flex: 1;
+                        min-width: 250px;
+                        display: flex;
+                        align-items: center;
+                        border: 1px solid #d8f3dc;
+                        border-radius: 8px;
+                        padding: 0 15px;
+                        background: #f8fcf8;
+
+                        .icon {
+                            color: #52b788;
+                            margin-right: 10px;
+                        }
+
+                        input {
+                            flex: 1;
+                            border: none;
+                            padding: 12px 0;
+                            background: transparent;
+                            font-size: 15px;
+                            outline: none;
+                            color: #2d6a4f;
+
+                            &::placeholder {
+                                color: #95d5b2;
+                            }
+                        }
+                    }
+
+                    .search-btn {
+                        background-color: #52b788;
+                        color: white;
+                        border: none;
+                        padding: 0 30px;
+                        border-radius: 8px;
+                        font-size: 16px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: background-color 0.2s;
+
+                        &:hover {
+                            background-color: #40916c;
+                        }
+                    }
+                }
+            }
+
+            .loading-state, .empty-state {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 300px;
+                color: #52b788;
+
+                .empty-icon {
+                    font-size: 64px;
+                    margin-bottom: 16px;
+                    color: #b7e4c7;
+                }
+
+                h3 {
+                    margin: 0 0 8px;
+                    color: #2d6a4f;
+                }
+            }
+
+            .prices-grid {
+                display: grid;
+                grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+                gap: 24px;
+
+                .price-card {
+                    background: white;
+                    border-radius: 12px;
+                    overflow: hidden;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+                    border: 1px solid #e9ecef;
+                    transition: transform 0.2s ease, box-shadow 0.2s ease;
+
+                    &:hover {
+                        transform: translateY(-4px);
+                        box-shadow: 0 8px 24px rgba(45, 106, 79, 0.1);
+                        border-color: #d8f3dc;
+                    }
+
+                    .card-header {
+                        background: #f8fcf8;
+                        padding: 15px 20px;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        border-bottom: 1px solid #e9ecef;
+
+                        .market-name {
+                            font-weight: 600;
+                            color: #1b4332;
+                            font-size: 15px;
+                        }
+
+                        .date {
+                            font-size: 12px;
+                            color: #74c69d;
+                            font-weight: 500;
+                        }
+                    }
+
+                    .card-body {
+                        padding: 20px;
+
+                        .commodity {
+                            margin: 0 0 5px;
+                            font-size: 22px;
+                            color: #2d6a4f;
+                        }
+
+                        .variety {
+                            margin: 0 0 20px;
+                            font-size: 14px;
+                            color: #74c69d;
+                        }
+
+                        .price-details {
+                            .price-box {
+                                display: flex;
+                                flex-direction: column;
+
+                                .label {
+                                    font-size: 12px;
+                                    color: #95d5b2;
+                                    text-transform: uppercase;
+                                    letter-spacing: 0.5px;
+                                    font-weight: 600;
+                                    margin-bottom: 4px;
+                                }
+
+                                .value {
+                                    font-weight: 700;
+                                    color: #40916c;
+                                }
+                            }
+
+                            .modal-price {
+                                background: #d8f3dc;
+                                padding: 15px;
+                                border-radius: 8px;
+                                margin-bottom: 15px;
+                                align-items: center;
+                                border: 1px solid #b7e4c7;
+
+                                .label {
+                                    color: #2d6a4f;
+                                }
+
+                                .value {
+                                    font-size: 24px;
+                                    color: #1b4332;
+                                }
+                            }
+
+                            .min-max {
+                                display: flex;
+                                justify-content: space-between;
+                                padding: 0 10px;
+
+                                .value {
+                                    font-size: 16px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

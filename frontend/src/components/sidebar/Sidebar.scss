@@ -1,0 +1,208 @@
+.sidebar {
+  width: 270px;
+  min-width: 270px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-surface);
+  border-right: 1px solid var(--border-organic);
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1rem;
+  z-index: 100;
+  box-shadow: 2px 0 12px rgba(47, 72, 66, 0.03);
+
+  .top {
+    width: 100%;
+    margin-bottom: 1.25rem;
+    padding: 0.25rem 0.5rem;
+
+    .brandLink {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+
+      .logoWrapper {
+        width: 42px;
+        height: 42px;
+        background: linear-gradient(135deg, var(--agri-sage-100), var(--agri-sage-200));
+        border-radius: var(--radius-sm);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: var(--shadow-sm);
+
+        .logoImg {
+          width: 26px;
+          height: 26px;
+          object-fit: contain;
+        }
+      }
+
+      .brandText {
+        display: flex;
+        flex-direction: column;
+
+        .logoTitle {
+          font-family: var(--font-family-heading);
+          font-size: 1.2rem;
+          font-weight: 800;
+          color: var(--agri-sage-900);
+          letter-spacing: -0.02em;
+          line-height: 1.1;
+        }
+
+        .logoTagline {
+          font-size: 0.72rem;
+          font-weight: 600;
+          color: var(--agri-sage-500);
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+        }
+      }
+    }
+  }
+
+  .sidebarMenu {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 4px;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: var(--agri-sage-200);
+    }
+  }
+
+  .menuSectionLabel {
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin: 0.85rem 0.5rem 0.5rem 0.5rem;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    width: 100%;
+  }
+
+  .navLink {
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.7rem 0.85rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      background: transparent;
+      transition: all var(--transition-fast);
+      position: relative;
+
+      .icon {
+        font-size: 1.25rem;
+        color: var(--agri-sage-500);
+        transition: color var(--transition-fast);
+      }
+
+      .navText {
+        font-size: 0.9rem;
+        font-weight: 500;
+        flex: 1;
+      }
+
+      .aiBadge {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.2rem;
+        background: linear-gradient(135deg, var(--agri-emerald-accent), #059669);
+        color: #ffffff;
+        font-size: 0.65rem;
+        font-weight: 800;
+        padding: 0.15rem 0.45rem;
+        border-radius: var(--radius-pill);
+        box-shadow: 0 2px 6px rgba(16, 185, 129, 0.25);
+      }
+    }
+
+    &:hover .card {
+      background-color: var(--agri-sage-50);
+      color: var(--agri-sage-800);
+
+      .icon {
+        color: var(--agri-sage-600);
+      }
+    }
+
+    &.active .card {
+      background: linear-gradient(135deg, var(--agri-sage-500), var(--agri-sage-600));
+      color: var(--text-on-dark);
+      box-shadow: 0 4px 14px rgba(82, 121, 111, 0.25);
+
+      .icon {
+        color: var(--text-on-dark);
+      }
+
+      .navText {
+        font-weight: 600;
+      }
+    }
+  }
+
+  .profile-actions {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid var(--border-subtle);
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+
+    .action {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 0.65rem 0.85rem;
+      border-radius: var(--radius-sm);
+      color: var(--text-main);
+      cursor: pointer;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: all var(--transition-fast);
+
+      .icon {
+        font-size: 1.25rem;
+        color: var(--agri-sage-500);
+      }
+
+      &:hover {
+        background-color: var(--agri-sage-50);
+        color: var(--agri-sage-800);
+      }
+    }
+
+    .logoutAction {
+      color: var(--agri-coral-accent);
+
+      .icon {
+        color: var(--agri-coral-accent);
+      }
+
+      &:hover {
+        background-color: #fef2f2;
+        color: #dc2626;
+      }
+    }
+  }
+}
