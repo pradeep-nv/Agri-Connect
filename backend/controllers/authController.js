@@ -73,8 +73,9 @@ try {
 };
 
 export const signout = async (req, res) => {
-// Clear the cookie on logout
-    res.clearCookie('token',{secure: true, sameSite: 'None'});
+    // Clear the cookie on logout
+    res.clearCookie('token', { httpOnly: false, secure: false, sameSite: 'lax' });
+    res.clearCookie('token');
     return res.status(200).json({ message: 'Logged out successfully' });
 };
 

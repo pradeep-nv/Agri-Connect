@@ -16,11 +16,15 @@ const ExpertSidebar = ({ setUserRole }) => {
   const handleLogout = async () => {
     try {
       await newRequest.post("/api/auth/signout");
-      localStorage.removeItem("userRole");
-      setUserRole(null);
-      navigate('/');
     } catch (err) {
       console.error("Error logging out", err);
+    } finally {
+      localStorage.removeItem("token");
+      localStorage.removeItem("userRole");
+      localStorage.removeItem("currentUser");
+      document.cookie = "token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      if (setUserRole) setUserRole(null);
+      navigate('/');
     }
   };
 
