@@ -1,115 +1,179 @@
 :root {
-    --primary-green: #2d6a4f;
-    --light-green: #95d5b2;
-    --dark-green: #1b4332;
-    --background-gray: #f7f8f8;
-    --text-dark: #344e41;
-  }
+  --primary-green: #2d6a4f;
+  --light-green: #95d5b2;
+  --dark-green: #1b4332;
+  --background-gray: #f7f8f8;
+  --text-dark: #344e41;
+}
+
+.expert-sidebar {
+  width: 250px;
+  min-width: 250px;
+  height: 100vh;
+  position: sticky;
+  top: 0;
+  background-color: var(--bg-surface, #ffffff);
+  border-right: 1px solid var(--border-organic, #d2ded7);
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1rem;
+  z-index: 100;
+  box-shadow: 2px 0 12px rgba(47, 72, 66, 0.03);
   
-  .sidebar {
-    width: 25vw;
-    height: 100vh;
-    background-color: var(--primary-green);
-    color: var(--text-dark);
+  .top {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    padding: 0.25rem 0.5rem;
+
+    .brandLink {
+      display: flex !important;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none !important;
+
+      .logoWrapper {
+        width: 42px;
+        height: 42px;
+        min-width: 42px;
+        background: linear-gradient(135deg, var(--agri-sage-100, #e3ebe5), var(--agri-sage-200, #c5d7cb));
+        border-radius: var(--radius-sm, 8px);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(27, 40, 37, 0.03);
+
+        .logoImg {
+          width: 26px;
+          height: 26px;
+          object-fit: contain;
+          display: block;
+        }
+      }
+
+      .brandText {
+        display: flex !important;
+        flex-direction: column !important;
+        text-align: left;
+
+        .logoTitle {
+          font-family: var(--font-family-heading, 'Outfit', sans-serif);
+          font-size: 1.2rem !important;
+          font-weight: 800 !important;
+          color: var(--agri-sage-900, #1b2825) !important;
+          letter-spacing: -0.02em;
+          line-height: 1.1;
+          display: block !important;
+          visibility: visible !important;
+        }
+
+        .logoTagline {
+          font-size: 0.72rem !important;
+          font-weight: 600 !important;
+          color: var(--agri-sage-500, #52796f) !important;
+          text-transform: uppercase;
+          letter-spacing: 0.06em;
+          display: block !important;
+          visibility: visible !important;
+        }
+      }
+    }
+  }
+
+  hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid var(--border-organic, #d2ded7);
+    margin: 10px 0 15px 0;
+  }
+
+  .bottom {
+    width: 100%;
+    flex: 1;
     display: flex;
     flex-direction: column;
+    align-items: stretch;
+  }
+
+  .card-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    width: 100%;
+  }
+
+  .card {
+    display: flex;
     align-items: center;
-    padding: 20px;
+    justify-content: flex-start;
+    background-color: var(--light-green);
+    color: var(--text-dark);
+    padding: 12px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
     
-    .top {
-      width: 100%;
-      text-align: center;
-      .logo {
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: var(--background-gray);
-      }
-    }
-  
-    hr {
-      width: 100%;
-      border: none;
-      border-top: 1px solid var(--light-green);
-      margin: 10px 0;
-    }
-  
-    .bottom {
-      width: 100%;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .card-container {
-      display: flex;
-      flex-direction: column;
-      gap: 15px;
-      width: 100%;
-    }
-  
-    .card {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: var(--light-green);
-      color: var(--text-dark);
-      padding: 15px;
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      
-      &:hover {
-        background-color: var(--primary-green);
-        color: white;
-      }
-  
+    &:hover {
+      background-color: var(--dark-green);
+      color: #ffffff;
+
       .icon {
-        font-size: 1.8rem;
-        margin-right: 10px;
-        color: var(--dark-green);
-      }
-  
-      span {
-        font-size: 1rem;
-        font-weight: 500;
+        color: #ffffff;
       }
     }
-  
-    .profile-actions {
-      margin-top: auto;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
-      width: 100%;
+
+    .icon {
+      font-size: 1.5rem;
+      margin-right: 12px;
+      color: var(--dark-green);
+      transition: color 0.25s ease;
     }
-  
-    .action {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 10px;
-      background-color: var(--light-green);
-      color: var(--text-dark);
-      border-radius: 10px;
-      cursor: pointer;
-      transition: background-color 0.3s;
-  
-      &:hover {
-        background-color: var(--primary-green);
-        color: white;
-      }
-  
-      .icon {
-        font-size: 1.5rem;
-        margin-right: 10px;
-        color: var(--dark-green);
-      }
-  
-      span {
-        font-size: 1rem;
-        font-weight: 500;
-      }
+
+    span {
+      font-size: 0.95rem;
+      font-weight: 600;
     }
   }
-  
+
+  .profile-actions {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+    padding-top: 15px;
+    border-top: 1px solid var(--border-organic, #d2ded7);
+  }
+
+  .action {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 10px 16px;
+    background-color: var(--light-green);
+    color: var(--text-dark);
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+
+    &:hover {
+      background-color: var(--dark-green);
+      color: #ffffff;
+
+      .icon {
+        color: #ffffff;
+      }
+    }
+
+    .icon {
+      font-size: 1.5rem;
+      margin-right: 12px;
+      color: var(--dark-green);
+      transition: color 0.25s ease;
+    }
+
+    span {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+  }
+}

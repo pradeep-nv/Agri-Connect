@@ -55,9 +55,10 @@ const ExpertHome = ({ setUserRole }) => {
           <BlogRecommendation/>
         </div>
         
-        {/* Welcome message with animation */}
-        <div className="welcomeMessage">
-          <h1>Welcome!</h1>
+        {/* Welcome Header */}
+        <div className="expertWelcomeHeader">
+          <h1>Welcome, Agri Expert 👨‍🌾</h1>
+          <p>Here is your daily overview of farmer appointments, advisories, and system notifications.</p>
         </div>
 
         <div className="notifications-appointments2">

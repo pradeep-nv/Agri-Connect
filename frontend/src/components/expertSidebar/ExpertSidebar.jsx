@@ -2,7 +2,6 @@ import React from "react";
 import BlogIcon from "@mui/icons-material/EditOutlined";
 import ViewBlogsIcon from "@mui/icons-material/ViewListOutlined";
 import RequestIcon from "@mui/icons-material/EventNoteOutlined";
-import HistoryIcon from "@mui/icons-material/HistoryOutlined";
 import ProfileIcon from "@mui/icons-material/AccountCircleOutlined";
 import LogoutIcon from "@mui/icons-material/ExitToAppOutlined";
 import "./ExpertSidebar.scss";
@@ -29,11 +28,16 @@ const ExpertSidebar = ({ setUserRole }) => {
   };
 
   return (
-    <div className="sidebar">
+    <div className="expert-sidebar">
       <div className="top">
-        <Link to="/" style={{ textDecoration: "none" }}>
-          <img src={logo} width={30} height={30} alt="" />
-          <span className="logo">AgriConnect</span>
+        <Link to="/" className="brandLink">
+          <div className="logoWrapper">
+            <img src={logo} className="logoImg" alt="AgriConnect Logo" />
+          </div>
+          <div className="brandText">
+            <span className="logoTitle">AgriConnect</span>
+            <span className="logoTagline">Expert Advisory</span>
+          </div>
         </Link>
       </div>
       <hr />
