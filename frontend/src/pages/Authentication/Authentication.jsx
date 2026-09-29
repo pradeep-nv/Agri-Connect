@@ -53,13 +53,29 @@ const Authentication = ({ setUserRole }) => {
     }
   };
 
+  const EMAIL_REGEX = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
   const handleSignup = async (e) => {
     e.preventDefault();
+    
+    if (!name.trim()) {
+      toast.error('Please enter your full name');
+      return;
+    }
+    if (!EMAIL_REGEX.test(email.trim())) {
+      toast.error('Please enter a valid email address (e.g. user@example.com)');
+      return;
+    }
+    if (password.length < 6) {
+      toast.error('Password must be at least 6 characters long');
+      return;
+    }
+
     setLoading(true);
     try {
       const response = await newRequest.post('/api/auth/signup', {
-        name,
-        email,
+        name: name.trim(),
+        email: email.trim().toLowerCase(),
         password,
         role,
       }, { withCredentials: true });
@@ -79,10 +95,20 @@ const Authentication = ({ setUserRole }) => {
 
   const handleSignin = async (e) => {
     e.preventDefault();
+
+    if (!EMAIL_REGEX.test(email.trim())) {
+      toast.error('Please enter a valid email address');
+      return;
+    }
+    if (!password) {
+      toast.error('Please enter your password');
+      return;
+    }
+
     setLoading(true);
     try {
       const response = await newRequest.post('/api/auth/signin', {
-        email,
+        email: email.trim().toLowerCase(),
         password,
         role,
       }, { withCredentials: true });
