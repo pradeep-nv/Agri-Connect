@@ -16,7 +16,9 @@ const UpdateFarmerProfile = () => {
     otherDetails: ''
   });
   const [loading, setLoading] = useState(true);
+  const [updating, setUpdating] = useState(false);
   const [successMessage, setSuccessMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -61,21 +63,32 @@ const UpdateFarmerProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setUpdating(true);
+    setErrorMessage('');
     try {
       const response = await newRequest.put(`/api/farmer-details/${user._id}`, farmerDetails);
       if (response.status === 200) {
-        setSuccessMessage('Profile updated successfully!');
-        setTimeout(() => navigate('/farmer_home'), 2000);
+        setSuccessMessage('Profile updated successfully! Redirecting to dashboard...');
+        setTimeout(() => navigate('/farmer_home'), 1500);
       }
     } catch (error) {
       console.error('Error updating profile:', error);
+      setErrorMessage(error.response?.data?.message || 'Error updating profile');
+    } finally {
+      setUpdating(false);
     }
   };
 
-  if (loading) return <div>Loading...</div>;
+  if (loading) return <div className="update-profile-loading">Loading...</div>;
 
   return (
     <div className="update-profile">
+      <div className="header-nav">
+        <button type="button" className="back-btn" onClick={() => navigate('/farmer_home')}>
+          ← Back to Dashboard
+        </button>
+      </div>
+
       <h2>Update Farmer Profile</h2>
       <form onSubmit={handleSubmit}>
         <div className="profile-section">
@@ -115,7 +128,7 @@ const UpdateFarmerProfile = () => {
             Types of Crops:
             <input
               type="text"
-              value={farmerDetails.cropNames.join(', ')}
+              value={Array.isArray(farmerDetails.cropNames) ? farmerDetails.cropNames.join(', ') : farmerDetails.cropNames}
               onChange={(e) => handleInputChange('cropNames', e.target.value.split(',').map(crop => crop.trim()))}
             />
           </label>
@@ -136,8 +149,21 @@ const UpdateFarmerProfile = () => {
           </label>
         </div>
 
-        <button type="submit" className="updateButton">Update Profile</button>
+        <div className="form-actions">
+          <button type="submit" className="updateButton" disabled={updating}>
+            {updating ? 'Updating...' : 'Update Profile'}
+          </button>
+          <button 
+            type="button" 
+            className="cancelButton" 
+            onClick={() => navigate('/farmer_home')}
+          >
+            Cancel
+          </button>
+        </div>
+
         {successMessage && <p className="success-message">{successMessage}</p>}
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
       </form>
     </div>
   );

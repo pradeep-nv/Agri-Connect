@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-// import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 import './AddProfile.scss';
 import newRequest from '../../utils/newRequest';
 
 const AddFarmerProfile = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     phone: '',
     address: '',
@@ -16,6 +17,7 @@ const AddFarmerProfile = () => {
   
   const [message, setMessage] = useState(null);
   const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -27,20 +29,32 @@ const AddFarmerProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
     try {
-      const response = await newRequest.post('/api/farmer-details', formData, {
-        withCredentials: true, // Ensure the JWT token from cookies is included
+      await newRequest.post('/api/farmer-details', formData, {
+        withCredentials: true,
       });
-      setMessage('Profile added successfully');
+      setMessage('Profile added successfully! Redirecting to dashboard...');
       setError(null);
+      setTimeout(() => {
+        navigate('/farmer_home');
+      }, 1500);
     } catch (err) {
-      setError(err.response?.data?.message || 'An error occurred');
+      setError(err.response?.data?.message || 'An error occurred while saving profile');
       setMessage(null);
+    } finally {
+      setLoading(false);
     }
   };
 
   return (
     <div className="add-farmer-profile">
+      <div className="header-nav">
+        <button type="button" className="back-btn" onClick={() => navigate('/farmer_home')}>
+          ← Back to Dashboard
+        </button>
+      </div>
+
       <h2>Add Farmer Profile</h2>
       <form onSubmit={handleSubmit}>
         <label>Phone:</label>
@@ -104,13 +118,25 @@ const AddFarmerProfile = () => {
           onChange={handleChange}
         />
 
-        <button type="submit">Add Profile</button>
+        <div className="form-actions">
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? 'Saving...' : 'Add Profile'}
+          </button>
+          <button 
+            type="button" 
+            className="cancel-btn" 
+            onClick={() => navigate('/farmer_home')}
+          >
+            Cancel
+          </button>
+        </div>
       </form>
       
-      {message && <p className="success-message">{message}</p>}
-      {error && <p className="error-message">{error}</p>}
+      {message && <p className="success-message active">{message}</p>}
+      {error && <p className="error-message active">{error}</p>}
     </div>
   );
 };
 
 export default AddFarmerProfile;
+
